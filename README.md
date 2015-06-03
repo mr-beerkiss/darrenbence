@@ -2,7 +2,7 @@
 
 Installing the project
 ```
-git clone https://github.com/vbence86/darrenbence && cd darrenbence && npm install
+git clone https://github.com/vbence86/darrenbence && cd darrenbence && npm install && node ./node_modules/bower/bin/bower install
 ```
 Hosting
 ```
