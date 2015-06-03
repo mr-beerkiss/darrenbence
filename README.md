@@ -1,10 +1,15 @@
 # darrenbence
 
-*Installing the project*
-```javascript
+Installing the project
+```
 npm install
 ```
-*Hosting*
-```javascript
+Hosting
+```
 gulp 
+```
+
+Loading
+```
+open http://localhost:9000
 ```
