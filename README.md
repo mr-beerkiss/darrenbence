@@ -2,7 +2,7 @@
 
 Installing the project
 ```
-npm install
+git clone https://github.com/vbence86/darrenbence && cd darrenbence && npm install
 ```
 Hosting
 ```
