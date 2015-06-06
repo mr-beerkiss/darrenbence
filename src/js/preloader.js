@@ -24,7 +24,10 @@
       this.load.json('test-map-json', 'assets/tilemaps/test_map.json');
 
       this.load.image('map-tiles', 'assets/images/scifi_platformTiles_32x32.png');
-      this.load.image('player', 'assets/player.png');
+      //this.load.image('player', 'assets/player.png');
+
+      this.load.image('test-character', 'assets/images/test-character.png');
+
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
 
