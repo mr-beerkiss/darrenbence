@@ -1,4 +1,4 @@
-(function() {
+define('game', function () {
   'use strict';
 
   function Game() {
@@ -6,19 +6,10 @@
   }
 
   function loadTiledMap(gameObj, mapName){
-    var map,
-        layer;
+    var map;
 
     map = gameObj.add.tilemap(mapName);
     map.addTilesetImage('tileset', 'map-tiles');
-
-    ////layer = map.createLayer('background');
-    //layer = map.createLayer('obstacles');
-
-    //var floorLayer = map.createLayer('floor');
-
-    //gameObj.physics.box2d.enable(floorLayer);
-    //floorLayer.body.static = true;
 
     // the floor tiles
     map.setCollisionBetween(15, 127);
@@ -43,7 +34,7 @@
 
       // init physics (Box2D)
       this.physics.startSystem(Phaser.Physics.ARCADE);
-      this.physics.arcade.gravity.y = 250;
+      this.physics.arcade.gravity.y = 500;
       //this.physics.box2d.friction = 0.9;
 
       var map = loadTiledMap(this.game, 'test-map');
@@ -74,7 +65,7 @@
 
       if ( this.cursors.up.isDown ) {
         if ( this.player.body.onFloor()) {
-          this.player.body.velocity.y = -200;
+          this.player.body.velocity.y = -250;
         }
       }
 
@@ -88,7 +79,6 @@
 
   };
 
-  window['darrenbence'] = window['darrenbence'] || {};
-  window['darrenbence'].Game = Game;
+  return Game;
 
-}());
+});

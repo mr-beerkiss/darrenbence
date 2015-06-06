@@ -1,15 +1,29 @@
-window.onload = function () {
-  'use strict';
+// using the 'load' event to get around the p2.js issue with Phraser 2.3
+// http://www.html5gamedevs.com/topic/4163-getting-p2-is-not-defined/
 
-  var game
-    , ns = window['darrenbence'];
+// Since phaser.min.js is loaded via script tag instead of RequireJS
+// it's necessary to kick it off only after Phaser loads
+window.addEventListener('load', function(){
+    'use strict';
 
-  game = new Phaser.Game(640, 480, Phaser.AUTO, 'darrenbence-game');
-  game.state.add('boot', ns.Boot);
-  game.state.add('preloader', ns.Preloader);
-  game.state.add('menu', ns.Menu);
-  game.state.add('game', ns.Game);
-  /* yo phaser:state new-state-files-put-here */
+    var ns = window['darrenbence'] || (window['darrenbence'] = {});
 
-  game.state.start('boot');
-};
+    require([
+        'boot',
+        'preloader',
+        'menu',
+        'game'
+    ], function(Boot, Preloader, Menu, Game){
+
+        var game;
+
+        game = new Phaser.Game(640, 480, Phaser.AUTO, 'darrenbence-game');
+        game.state.add('boot', Boot);
+        game.state.add('preloader', Preloader);
+        game.state.add('menu', Menu);
+        game.state.add('game', Game);
+
+        game.state.start('boot');           
+
+    });
+});

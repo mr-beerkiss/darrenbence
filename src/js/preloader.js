@@ -1,4 +1,4 @@
-(function() {
+define('preloader', function() {
   'use strict';
 
   function Preloader() {
@@ -46,7 +46,6 @@
     }
   };
 
-  window['darrenbence'] = window['darrenbence'] || {};
-  window['darrenbence'].Preloader = Preloader;
+  return Preloader;
 
-}());
+});

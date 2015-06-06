@@ -1,4 +1,4 @@
-(function () {
+define('boot', function () {
   'use strict';
 
   function Boot() {}
@@ -28,8 +28,6 @@
     }
   };
 
-  window['darrenbence'] = window['darrenbence'] || {};
-  window['darrenbence'].Boot = Boot;
-
-}());
+  return Boot;
+});
 

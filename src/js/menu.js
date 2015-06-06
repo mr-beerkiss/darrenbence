@@ -1,4 +1,4 @@
-(function() {
+define('menu', function() {
   'use strict';
 
   function Menu() {
@@ -34,7 +34,6 @@
     }
   };
 
-  window['darrenbence'] = window['darrenbence'] || {};
-  window['darrenbence'].Menu = Menu;
+  return Menu;
 
-}());
+});

@@ -5,6 +5,10 @@
     ""
   ],
   "dependencies": {
-    "phaser-official": "latest"
+    "phaser-official": "latest",
+    "requirejs": "~2.1.18"
+  },
+  "devDependencies": {
+    "requirejs": "~2.1.18"
   }
 }
