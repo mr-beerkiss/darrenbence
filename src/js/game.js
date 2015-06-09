@@ -5,49 +5,48 @@ define('game', function () {
     this.player = null;
   }
 
-  function loadTiledMap(gameObj, mapName){
-    var map;
+  function loadTiledMap(mapName){
+    var map,
+        layers = {};
 
-    map = gameObj.add.tilemap(mapName);
+    map = this.game.add.tilemap(mapName);
     map.addTilesetImage('tileset', 'map-tiles');
 
     // the floor tiles
-    map.setCollisionBetween(15, 127);
+    map.setCollisionBetween(0,1);
+    map.setCollisionBetween(1,255);
+    map.setCollisionBetween(256,3000);
 
-    map.setCollisionBetween(70, 71);
-    map.setCollisionBetween(105, 106);
+    layers.background = map.createLayer('background');
+    layers.floor = map.createLayer('floor');
+    
+    layers.floor.resizeWorld();
 
-    map.setCollisionBetween(140, 146);
-    map.setCollisionBetween(175, 181);
+    this.game.tiledMap = {};
+    this.game.tiledMap.map = map;
+    this.game.tiledMap.layers = layers;
 
-    map.setCollisionBetween(455, 468);
-    map.setCollisionBetween(210, 216);
-
-    return map;
   }
 
   Game.prototype = {
 
     create: function () {
       var x = this.game.width / 2
-        , y = this.game.height / 2;
+        , y = this.game.height / 2
+        , map;
 
       // init physics (Box2D)
       this.physics.startSystem(Phaser.Physics.ARCADE);
+
       this.physics.arcade.gravity.y = 500;
-      //this.physics.box2d.friction = 0.9;
 
-      var map = loadTiledMap(this.game, 'test-map');
-      this.floorLayer = map.createLayer('level1');
-
-      this.floorLayer.resizeWorld();
+      loadTiledMap.call(this, 'test-map');
 
       this.player = this.add.sprite(x, y, 'test-character');
       this.player.anchor.setTo(0.5, 0.5);
       this.player.scale.set(0.5);
 
       this.physics.arcade.enable(this.player); 
-
       
       this.player.body.linearDamping = 1;
       this.player.collideWorldBounds = true;
@@ -59,7 +58,7 @@ define('game', function () {
 
     update: function () {
 
-      this.physics.arcade.collide(this.player, this.floorLayer);
+      this.physics.arcade.collide(this.player, this.game.tiledMap.layers.background);
 
       this.player.body.velocity.x = 0;
 
