@@ -6,26 +6,24 @@ define('game', function () {
   }
 
   function loadTiledMap(mapName){
-    var map,
-        layers = {};
+    var map;
 
     map = this.game.add.tilemap(mapName);
     map.addTilesetImage('tileset', 'map-tiles');
 
     // the floor tiles
-    map.setCollisionBetween(0,1);
-    map.setCollisionBetween(1,255);
-    map.setCollisionBetween(256,3000);
+    map.setCollisionBetween(1, 1000);
 
-    layers.background = map.createLayer('background');
-    layers.floor = map.createLayer('floor');
-    
-    layers.floor.resizeWorld();
+    for (var i = map.layers.length - 1, layer; i >= 0; i--){
+        layer = map.createLayer(i);
+        layer.resizeWorld();
+        // Phaser limiation - just the first layer can be used as collidible layer
+        if (0 === i){
+            map.collisionLayer = layer;
+        }
+    }
 
-    this.game.tiledMap = {};
-    this.game.tiledMap.map = map;
-    this.game.tiledMap.layers = layers;
-
+    this.game.tiledMap = map;
   }
 
   Game.prototype = {
@@ -46,7 +44,7 @@ define('game', function () {
       this.player.anchor.setTo(0.5, 0.5);
       this.player.scale.set(0.5);
 
-      this.physics.arcade.enable(this.player); 
+      this.physics.arcade.enable(this.player);
       
       this.player.body.linearDamping = 1;
       this.player.collideWorldBounds = true;
@@ -58,20 +56,20 @@ define('game', function () {
 
     update: function () {
 
-      this.physics.arcade.collide(this.player, this.game.tiledMap.layers.background);
+      this.physics.arcade.collide(this.player, this.game.tiledMap.collisionLayer);
 
       this.player.body.velocity.x = 0;
 
       if ( this.cursors.up.isDown ) {
         if ( this.player.body.onFloor()) {
-          this.player.body.velocity.y = -250;
+          this.player.body.velocity.y = -350;
         }
       }
 
       if ( this.cursors.left.isDown ) {
-        this.player.body.velocity.x = -150;
+        this.player.body.velocity.x = -350;
       } else if ( this.cursors.right.isDown ) {
-        this.player.body.velocity.x = 150;
+        this.player.body.velocity.x = 350;
       }
     }
 
