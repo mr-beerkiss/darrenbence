@@ -1,0 +1,34 @@
+{"frames": [
+	{
+		"filename": "stance00",
+		"frame": {"x":0,"y":0,"w":64,"h":64},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+		"sourceSize": {"w":64,"h":64}
+	},
+	{
+		"filename": "stance01",
+		"frame": {"x":0,"y":0,"w":64,"h":64},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+		"sourceSize": {"w":64,"h":64}
+	},
+	{
+		"filename": "stance02",
+		"frame": {"x":0,"y":0,"w":64,"h":64},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+		"sourceSize": {"w":64,"h":64}
+	},
+	{
+		"filename": "stance03",
+		"frame": {"x":0,"y":0,"w":64,"h":64},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+		"sourceSize": {"w":64,"h":64}
+	},
+]}

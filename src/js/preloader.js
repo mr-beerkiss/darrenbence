@@ -19,7 +19,7 @@ define('preloader', function() {
       
     loadResources: function () {
 
-      this.load.image('test-character', 'assets/images/test-character.png');
+      this.load.spritesheet('test-character', 'assets/images/platformer_sprites_base.png', 64, 64, 65);
 
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
