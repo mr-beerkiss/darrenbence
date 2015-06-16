@@ -10,10 +10,12 @@ define('tiledmap', function(){
 					images = [];
 
 				for (var i in cachedImages){
-					if (!cachedImages[i] || !cachedImages[i].url){
-						continue;
+					if (cachedImages.hasOwnProperty(i)) {
+						if (!cachedImages[i] || !cachedImages[i].url){
+							continue;
+						}
+						images.push( [ cachedImages[i].url.match(matchPattern)[1], i ] );
 					}
-					images.push( [ cachedImages[i].url.match(matchPattern)[1], i ] );
 				}
 				return images;
 			},
@@ -51,16 +53,18 @@ define('tiledmap', function(){
 			};
 
 		return {
+			
 			load: function(mapName){
 				var map;
 
 				map = game.add.tilemap(mapName);
-				addTilesetImages(game, map);				
+				addTilesetImages(game, map);
+				console.log(map);				
 
 				// the floor tiles
 				map.setCollisionBetween(1, 1000);
 
-				for (var i = 0, layer; i >= 0; i--){
+				for (var i = map.layers.length - 1, layer; i >= 0; i--){
 				    layer = map.createLayer(i);
 				    layer.resizeWorld();
 				    // Phaser limiation - just the first layer can be used as collidible layer
