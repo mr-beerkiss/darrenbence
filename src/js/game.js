@@ -38,15 +38,25 @@ define('game', [
 	    // Run (8 frames)
 	    this.player.animations.add('run', [4, 5, 6, 7, 8, 9, 10, 11], 10, true);
 	    // Swing weapon (4 frames)
+	    this.player.animations.add('swing', [12, 13, 14, 15], 10, true);
 	    // Block (2 frames)
+	    this.player.animations.add('block', [16, 17], 10, true);
 	    // Hit and Die (6 frames)
+	    this.player.animations.add('die', [18, 19, 20, 21, 22, 23], 10, true);
 	    // Cast spell (4 frames)
+	    this.player.animations.add('cast', [24, 25, 26, 27], 10, true);
 	    // Shoot bow (4 frames)
+	    this.player.animations.add('shoot', [28, 29, 30, 31], 10, true);
 	    // Walk (8 frames)
+	    this.player.animations.add('walk', [32, 33, 34, 35, 36, 37, 38, 39], 10, true);
 	    // Duck (2 frames)
+	    this.player.animations.add('duck', [40, 41], 10, true);
 	    // Jump and Fall (6 frames)
+	    this.player.animations.add('jump', [42, 43, 44, 45, 46, 47], 10, true);
 	    // Ascend stairs/slope (8 frames)
+	    this.player.animations.add('ascend', [48, 49, 50, 51, 52, 53, 54, 55], 10, true);
 	    // Descend stairs/slope (8 frames)
+	    this.player.animations.add('descend', [56, 57, 58, 59, 60, 61, 62, 63], 10, true);
 	    // Stand (1 frame)
 	    this.player.animations.add('stand', [64], 10, true);
 	    this.player.animations.play('stand');
