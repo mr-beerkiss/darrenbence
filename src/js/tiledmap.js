@@ -58,8 +58,7 @@ define('tiledmap', function(){
 				var map;
 
 				map = game.add.tilemap(mapName);
-				addTilesetImages(game, map);
-				console.log(map);				
+				addTilesetImages(game, map);			
 
 				// the floor tiles
 				map.setCollisionBetween(1, 1000);
